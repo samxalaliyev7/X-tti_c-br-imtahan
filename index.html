@@ -29,6 +29,33 @@ input{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;
 .medal{display:inline-flex;width:28px;height:28px;border-radius:999px;align-items:center;justify-content:center;background:#eef2ff;color:#1d4ed8;font-weight:900}
 @media(max-width:700px){.leaderboard-table th,.leaderboard-table td{font-size:12px;padding:8px}.leaderboard-table{display:block;overflow-x:auto;white-space:nowrap}}
 
+
+.humay-banner{
+  margin:14px 0 16px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#eef2ff,#fff7ed);
+  border:1px solid #dbeafe;
+  box-shadow:0 8px 24px rgba(37,99,235,.08);
+  color:#0f172a;
+  font-weight:900;
+  font-size:16px;
+  line-height:1.45;
+}
+.humay-banner .tag{
+  display:inline-flex;
+  margin-right:8px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#2563eb;
+  color:white;
+  font-size:12px;
+  vertical-align:middle;
+}
+@media(max-width:700px){
+  .humay-banner{font-size:14px;padding:12px 13px}
+}
+
 </style>
 </head>
 <body>
@@ -42,11 +69,13 @@ input{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;
     <p class="muted">Ad-soyadını yaz və imtahana başla. Sualların sırası və cavab variantları hər dəfə qarışdırılır.</p>
     <div class="field"><label>Ad, soyad</label><input id="studentName" placeholder="məsələn: Samxal Aliyev"></div>
     <div class="field"><label>Qrup / qeyd</label><input id="studentGroup" placeholder="istəyə bağlı"></div>
+    <div class="humay-banner"><span class="tag">Qrup nümayəndəsi</span>Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. YAXŞI Kİ VARAM! #Humay</div>
     <button class="btn success" id="startBtn">İmtahana başla</button>
     <div class="leaderboard-card" id="loginLeaderboard"></div>
     <p class="footer-note">Qeyd: Bu GitHub Pages üçün statik sistemdir. Nəticələr yalnız istifadəçinin öz brauzerində saxlanır.</p>
   </section>
 
+  <div id="humayExamBanner" class="humay-banner" style="margin-top:10px"><span class="tag">Mesaj</span>Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. YAXŞI Kİ VARAM! #Humay</div>
   <section id="examView" class="hidden">
     <div class="exam-layout">
       <div class="card question-panel">
