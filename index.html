@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xətti cəbr imtahan sistemi</title>
+<style>
+:root{--bg:#f3f6fb;--card:#fff;--text:#0f172a;--muted:#64748b;--primary:#2563eb;--primary2:#1d4ed8;--blue:#2563eb;--yellow:#fbbf24;--green:#16a34a;--red:#dc2626;--border:#dbe2ef;--soft:#eff6ff;--dark:#111827;}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;backdrop-filter:blur(6px)}
+.brand h1{font-size:18px;margin:0 0 3px}.brand p{font-size:13px;color:var(--muted);margin:0}.timer{display:flex;gap:10px;align-items:center;background:var(--dark);color:#fff;padding:12px 18px;border-radius:14px;font-weight:900;font-size:18px;min-width:150px;justify-content:center}.timer.low{background:var(--red)}
+.hourglass{width:20px;height:28px;position:relative;animation:spin 2.4s linear infinite}.hourglass:before,.hourglass:after{content:"";position:absolute;left:2px;width:16px;height:11px;border:2px solid currentColor}.hourglass:before{top:0;border-bottom:none;border-radius:4px 4px 1px 1px}.hourglass:after{bottom:0;border-top:none;border-radius:1px 1px 4px 4px}@keyframes spin{0%,42%{transform:rotate(0)}50%,92%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+.container{max-width:1300px;margin:0 auto;padding:18px}.card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:0 12px 28px rgba(15,23,42,.07);padding:20px}.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:13px}.btn{border:none;background:var(--primary);color:white;border-radius:12px;padding:11px 16px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{background:var(--primary2)}.btn.ghost{background:white;color:var(--text);border:1px solid var(--border)}.btn.danger{background:var(--red)}.btn.success{background:var(--green)}.btn:disabled{opacity:.55;cursor:not-allowed}
+input{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;font:inherit}.field{margin:12px 0}.login{max-width:470px;margin:50px auto}.badge{display:inline-flex;background:var(--soft);color:var(--primary2);border-radius:999px;padding:6px 10px;font-weight:800;font-size:13px}
+.exam-layout{display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:16px}.question-panel{min-height:calc(100vh - 125px);display:flex;flex-direction:column}.q-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}.q-media{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px;display:flex;align-items:center;justify-content:center;min-height:90px;max-height:28vh;overflow:auto}.q-media img{max-width:100%;height:auto;max-height:25vh;object-fit:contain}
+.options{display:grid;gap:8px;margin-top:10px}.option{background:#fff;border:2px solid var(--border);border-radius:14px;padding:9px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:.12s;min-height:48px}.option:hover{border-color:#93c5fd;background:#f8fbff}.option.selected{border-color:var(--primary);background:#eff6ff}.option .circle{width:20px;height:20px;border-radius:50%;border:2px solid #94a3b8;flex-shrink:0}.option.selected .circle{border-color:var(--primary);box-shadow:inset 0 0 0 5px white;background:var(--primary)}.option img{max-width:100%;height:auto;max-height:9vh;object-fit:contain;display:block}.nav-actions{display:flex;justify-content:space-between;gap:10px;margin-top:auto;padding-top:12px}.nav-card{position:sticky;top:86px;align-self:start;max-height:calc(100vh - 105px);overflow:auto}.nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:12px}.nav-btn{border:1px solid var(--border);background:#fff;border-radius:10px;padding:8px 0;font-size:12px;font-weight:800;cursor:pointer}.nav-btn.current{outline:3px solid rgba(37,99,235,.25);border-color:var(--blue)}.nav-btn.answered{background:var(--blue);color:#fff;border-color:var(--blue)}.nav-btn.skipped{background:var(--yellow);color:#78350f;border-color:var(--yellow)}.progress{font-size:13px;color:var(--muted);margin-top:8px}.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.stat{border:1px solid var(--border);border-radius:14px;padding:14px;background:#fff}.stat b{font-size:28px;color:var(--primary2)}.wrong-card{border:1px solid var(--border);border-radius:14px;background:#fff;margin:12px 0;padding:14px}.review-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer-box{border:1px solid var(--border);border-radius:12px;padding:10px;background:#f8fafc}.answer-box.correct{border-color:#86efac;background:#f0fdf4}.answer-box.wrong{border-color:#fecaca;background:#fef2f2}.answer-box img{max-width:100%;height:auto;max-height:120px;object-fit:contain}.alert{padding:12px;border:1px solid var(--border);border-radius:12px;background:#f8fafc}.footer-note{color:var(--muted);font-size:13px;margin-top:12px;line-height:1.5}
+@media(max-width:900px){.header{align-items:flex-start;flex-direction:column}.timer{width:100%}.exam-layout{grid-template-columns:1fr}.nav-card{position:static;max-height:none}.nav-grid{grid-template-columns:repeat(10,1fr)}.question-panel{min-height:auto}.result-grid{grid-template-columns:repeat(2,1fr)}.review-columns{grid-template-columns:1fr}.option img{max-height:75px}.q-media img{max-height:190px}}
+@media(max-width:560px){.container{padding:10px}.card{padding:14px}.brand h1{font-size:16px}.nav-grid{grid-template-columns:repeat(8,1fr)}.result-grid{grid-template-columns:1fr}.q-media{max-height:220px}.q-media img{max-height:200px}.option{padding:7px}.option img{max-height:62px}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="brand"><h1 id="pageTitle">Xətti cəbr imtahan sistemi</h1><p id="pageSubtitle">249 sual · 120 dəqiqə</p></div>
+  <div id="timerBox" class="timer hidden"><span class="hourglass"></span><span id="timerText">120:00</span></div>
+</header>
+<main class="container">
+  <section id="loginView" class="login card">
+    <h2>İmtahana giriş</h2>
+    <p class="muted">Ad-soyadını yaz və imtahana başla. Sualların sırası və cavab variantları hər dəfə qarışdırılır.</p>
+    <div class="field"><label>Ad, soyad</label><input id="studentName" placeholder="məsələn: Samxal Aliyev"></div>
+    <div class="field"><label>Qrup / qeyd</label><input id="studentGroup" placeholder="istəyə bağlı"></div>
+    <button class="btn success" id="startBtn">İmtahana başla</button>
+    <p class="footer-note">Qeyd: Bu GitHub Pages üçün statik sistemdir. Nəticələr yalnız istifadəçinin öz brauzerində saxlanır.</p>
+  </section>
+
+  <section id="examView" class="hidden">
+    <div class="exam-layout">
+      <div class="card question-panel">
+        <div class="q-top">
+          <div><span class="badge" id="counterBadge">Sual 1 / 249</span><div class="progress" id="progressText"></div></div>
+          <button class="btn danger" id="finishBtn">İmtahanı bitir</button>
+        </div>
+        <div class="q-media"><img id="questionImg" alt="Sual"></div>
+        <div class="options" id="optionsBox"></div>
+        <div class="nav-actions">
+          <button class="btn ghost" id="prevBtn">Əvvəlki</button>
+          <button class="btn ghost" id="skipBtn">Cavabsız növbəti</button>
+          <button class="btn" id="nextBtn">Növbəti</button>
+        </div>
+      </div>
+      <aside class="card nav-card">
+        <h3 style="margin:0">Sual nömrələri</h3>
+        <p class="small muted">Mavi - cavablanıb, sarı - baxılıb/cavabsız keçilib.</p>
+        <div class="nav-grid" id="navGrid"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="resultView" class="hidden">
+    <div class="card">
+      <h2>İmtahan nəticəsi</h2>
+      <p id="studentInfo" class="muted"></p>
+      <div class="result-grid">
+        <div class="stat"><span>Düzgün</span><br><b id="statCorrect">0</b></div>
+        <div class="stat"><span>Səhv</span><br><b id="statWrong">0</b></div>
+        <div class="stat"><span>Cavabsız</span><br><b id="statBlank">0</b></div>
+        <div class="stat"><span>Faiz</span><br><b id="statPercent">0%</b></div>
+      </div>
+      <button class="btn success" id="restartBtn">Yenidən başla</button>
+      <button class="btn ghost" id="downloadBtn">Nəticəni JSON yüklə</button>
+    </div>
+    <div id="wrongList" class="card" style="margin-top:16px"></div>
+  </section>
+</main>
+<script src="questions-data.js?v=xetti-cebr-249-yekun-v1"></script>
+<script>
+(function(){
+  const cfg = window.EXAM_CONFIG || {title:'Xətti cəbr', subtitle:'249 sual', durationMinutes:120, version:'dev'};
+  const BASE = window.EXAM_QUESTIONS || [];
+  let student={name:'',group:''};
+  let exam=[], answers=[], visited=[], current=0, remaining=cfg.durationMinutes*60, timer=null, finished=false;
+  const $=id=>document.getElementById(id);
+  $('pageTitle').textContent = cfg.title;
+  $('pageSubtitle').textContent = cfg.subtitle;
+  function shuffle(arr){const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a;}
+  function makeExam(){
+    exam = shuffle(BASE).map((q,idx)=>({sessionNo:idx+1, sourceId:q.id, question:q.question, options:shuffle(q.options.map((o,i)=>({...o, originalIndex:i})))}));
+    answers = new Array(exam.length).fill(null); visited = new Array(exam.length).fill(false); current=0; finished=false; remaining=cfg.durationMinutes*60;
+  }
+  function start(){
+    const name=$('studentName').value.trim(); if(!name){alert('Ad-soyad yazın.'); return;}
+    student={name, group:$('studentGroup').value.trim()};
+    makeExam(); $('loginView').classList.add('hidden'); $('resultView').classList.add('hidden'); $('examView').classList.remove('hidden'); $('timerBox').classList.remove('hidden'); renderNav(); renderQuestion(); startTimer();
+  }
+  function startTimer(){ clearInterval(timer); updateTimer(); timer=setInterval(()=>{remaining--; updateTimer(); if(remaining<=0) finish(true);},1000); }
+  function updateTimer(){ const s=Math.max(0,remaining), m=Math.floor(s/60), sec=s%60; $('timerText').textContent=String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'); $('timerBox').classList.toggle('low',s<=300); }
+  function renderQuestion(){
+    const q=exam[current]; visited[current]=true;
+    $('counterBadge').textContent = `Sual ${current+1} / ${exam.length}  ·  Baza No: ${q.sourceId}`;
+    const answered=answers.filter(a=>a!==null).length, skipped=visited.filter((v,i)=>v&&answers[i]===null).length;
+    $('progressText').textContent = `Cavablanıb: ${answered} / ${exam.length} · Cavabsız keçilən: ${skipped}`;
+    $('questionImg').src=q.question.img; $('questionImg').width=q.question.w; $('questionImg').height=q.question.h;
+    const box=$('optionsBox'); box.innerHTML='';
+    q.options.forEach((o,i)=>{ const div=document.createElement('div'); div.className='option'+(answers[current]===i?' selected':''); div.innerHTML=`<span class="circle"></span><img src="${o.img}" alt="Variant ${i+1}" width="${o.w}" height="${o.h}">`; div.onclick=()=>selectOption(i); box.appendChild(div); });
+    $('prevBtn').disabled=current===0; $('nextBtn').disabled=current===exam.length-1; $('skipBtn').disabled=current===exam.length-1;
+    renderNav();
+  }
+  function selectOption(i){ answers[current]=i; renderQuestion(); setTimeout(()=>{ if(!finished && current<exam.length-1){ current++; renderQuestion(); } },350); }
+  function go(delta){ if(answers[current]===null) visited[current]=true; current=Math.max(0,Math.min(exam.length-1,current+delta)); renderQuestion(); }
+  function goTo(i){ if(answers[current]===null) visited[current]=true; current=i; renderQuestion(); }
+  function renderNav(){ const grid=$('navGrid'); grid.innerHTML=''; exam.forEach((q,i)=>{ const b=document.createElement('button'); b.className='nav-btn'; if(i===current)b.classList.add('current'); if(answers[i]!==null)b.classList.add('answered'); else if(visited[i])b.classList.add('skipped'); b.textContent=i+1; b.title=`Sual ${i+1}, baza No ${q.sourceId}`; b.onclick=()=>goTo(i); grid.appendChild(b); }); }
+  function finish(auto=false){ if(finished)return; if(!auto && !confirm('İmtahanı bitirmək istəyirsiniz?')) return; finished=true; clearInterval(timer); $('timerBox').classList.add('hidden'); const res=calcResult(auto); showResult(res); }
+  function calcResult(auto){ let correct=0, wrong=0, blank=0; const detail=exam.map((q,i)=>{ const ans=answers[i]; const correctIndex=q.options.findIndex(o=>o.correct); const ok=ans!==null && q.options[ans].correct; if(ok)correct++; else if(ans===null)blank++; else wrong++; return {sessionNo:i+1, sourceId:q.sourceId, question:q.question, selectedIndex:ans, correctIndex, selected:ans!==null?q.options[ans]:null, correct:q.options[correctIndex], ok}; }); const percent=Math.round(correct/exam.length*100); return {student, version:cfg.version, auto, date:new Date().toISOString(), durationMinutes:cfg.durationMinutes, spentSeconds:cfg.durationMinutes*60-Math.max(0,remaining), total:exam.length, correct, wrong, blank, percent, detail}; }
+  function showResult(res){
+    $('examView').classList.add('hidden'); $('resultView').classList.remove('hidden');
+    $('studentInfo').textContent = `${res.student.name}${res.student.group?' · '+res.student.group:''} · ${new Date(res.date).toLocaleString('az-AZ')}`;
+    $('statCorrect').textContent=res.correct; $('statWrong').textContent=res.wrong; $('statBlank').textContent=res.blank; $('statPercent').textContent=res.percent+'%';
+    localStorage.setItem('xetti_249_last_result', JSON.stringify({student:res.student,date:res.date,total:res.total,correct:res.correct,wrong:res.wrong,blank:res.blank,percent:res.percent,version:res.version}));
+    const wrongs=res.detail.filter(d=>!d.ok); const list=$('wrongList'); list.innerHTML=`<h3>Səhv və cavabsız suallar (${wrongs.length})</h3>`;
+    if(!wrongs.length){ list.innerHTML += '<div class="alert">Bütün cavablar düzgündür.</div>'; return; }
+    wrongs.forEach(d=>{ const card=document.createElement('div'); card.className='wrong-card'; card.innerHTML=`<h4>Sual ${d.sessionNo} / Baza No: ${d.sourceId}</h4><div class="q-media" style="max-height:220px"><img src="${d.question.img}" width="${d.question.w}" height="${d.question.h}"></div><div class="review-columns"><div class="answer-box wrong"><b>Seçilən cavab</b><br>${d.selected?`<img src="${d.selected.img}" width="${d.selected.w}" height="${d.selected.h}">`:'Cavab verilməyib'}</div><div class="answer-box correct"><b>Düzgün cavab</b><br><img src="${d.correct.img}" width="${d.correct.w}" height="${d.correct.h}"></div></div>`; list.appendChild(card); });
+    window._lastResult=res;
+  }
+  function downloadResult(){ const data=window._lastResult || calcResult(false); const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='xetti-cebr-netice.json'; a.click(); URL.revokeObjectURL(a.href); }
+  $('startBtn').onclick=start; $('prevBtn').onclick=()=>go(-1); $('nextBtn').onclick=()=>go(1); $('skipBtn').onclick=()=>go(1); $('finishBtn').onclick=()=>finish(false); $('restartBtn').onclick=()=>{ $('resultView').classList.add('hidden'); $('loginView').classList.remove('hidden'); }; $('downloadBtn').onclick=downloadResult;
+})();
+</script>
+</body>
+</html>
