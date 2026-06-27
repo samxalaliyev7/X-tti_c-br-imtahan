@@ -11,3 +11,8 @@
 
 Dashboard və imtahan üst hissəsinə Humay mesajı əlavə edildi:
 Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. YAXŞI Kİ VARAM! #Humay
+
+
+## Vizual düzəliş
+
+Humay mesajının dashboard görünüşü daha səliqəli şrift və daha yumşaq yazı qalınlığı ilə yeniləndi.

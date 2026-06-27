@@ -15,3 +15,12 @@ Qeyd: Tam mətn/LaTeX formatı üçün PDF-dəki 249 sualın hamısı bir-bir tr
 İmtahan dashboarduna bu mesaj əlavə edildi:
 
 Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. YAXŞI Kİ VARAM! #Humay
+
+
+## Humay mesajı - səliqəli şrift düzəlişi
+
+Dashboard mesajının şrifti daha səliqəli görünməsi üçün yeniləndi:
+- Segoe UI / Noto Sans / Arial ailəsi;
+- daha yumşaq font qalınlığı;
+- daha rahat line-height;
+- Azərbaycan hərflərinin daha düzgün görünməsi üçün sistem şriftləri.

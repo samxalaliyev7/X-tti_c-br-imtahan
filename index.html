@@ -56,6 +56,48 @@ input{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;
   .humay-banner{font-size:14px;padding:12px 13px}
 }
 
+
+.humay-banner{
+  margin:14px 0 16px;
+  padding:16px 18px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#eef4ff,#fffaf2);
+  border:1px solid #dbeafe;
+  box-shadow:0 10px 26px rgba(37,99,235,.08);
+  color:#0f172a;
+  font-family:"Segoe UI", "Noto Sans", Arial, sans-serif;
+  font-weight:700;
+  font-size:17px;
+  line-height:1.55;
+  letter-spacing:.01em;
+  word-spacing:.04em;
+}
+.humay-banner .tag{
+  display:inline-flex;
+  margin-right:10px;
+  margin-bottom:3px;
+  padding:6px 11px;
+  border-radius:999px;
+  background:#2563eb;
+  color:white;
+  font-family:"Segoe UI", "Noto Sans", Arial, sans-serif;
+  font-size:13px;
+  font-weight:800;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  .humay-banner{
+    font-size:15px;
+    padding:14px 15px;
+    line-height:1.6;
+  }
+  .humay-banner .tag{
+    display:inline-flex;
+    margin-bottom:6px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -69,13 +111,13 @@ input{width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;
     <p class="muted">Ad-soyadını yaz və imtahana başla. Sualların sırası və cavab variantları hər dəfə qarışdırılır.</p>
     <div class="field"><label>Ad, soyad</label><input id="studentName" placeholder="məsələn: Samxal Aliyev"></div>
     <div class="field"><label>Qrup / qeyd</label><input id="studentGroup" placeholder="istəyə bağlı"></div>
-    <div class="humay-banner"><span class="tag">Qrup nümayəndəsi</span>Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. YAXŞI Kİ VARAM! #Humay</div>
+    <div class="humay-banner"><span class="tag">Qrup nümayəndəsi</span>Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. Yaxşı ki, varam! #Humay</div>
     <button class="btn success" id="startBtn">İmtahana başla</button>
     <div class="leaderboard-card" id="loginLeaderboard"></div>
     <p class="footer-note">Qeyd: Bu GitHub Pages üçün statik sistemdir. Nəticələr yalnız istifadəçinin öz brauzerində saxlanır.</p>
   </section>
 
-  <div id="humayExamBanner" class="humay-banner" style="margin-top:10px"><span class="tag">Mesaj</span>Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. YAXŞI Kİ VARAM! #Humay</div>
+  <div id="humayExamBanner" class="humay-banner" style="margin-top:10px"><span class="tag">Mesaj</span>Yatıb-qalxın, belə qrup nümayəndəniz olduğu üçün şükür edin. Yaxşı ki, varam! #Humay</div>
   <section id="examView" class="hidden">
     <div class="exam-layout">
       <div class="card question-panel">
