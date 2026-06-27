@@ -1,11 +1,10 @@
 # Xətti cəbr və riyazi analiz imtahan sistemi
 
-Bu versiyada 249 sual, 120 dəqiqəlik timer, tək-tək sual keçidi, cavabların qarışdırılması, səhv cavabların göstərilməsi və reytinq cədvəli var.
+Bu versiyada sual və cavab şəkilləri kəsilməsin deyə CSS düzəldilib:
+- sual şəkillərində max-height məhdudiyyəti götürülüb;
+- cavab variantı şəkillərində max-height məhdudiyyəti götürülüb;
+- sual/cavab tam görünür, lazım olduqda səhifə ümumi olaraq scroll olur.
 
-## Reytinq qaydası
+Reytinq cədvəli düzgün cavab sayına görə, bərabərlik olduqda isə daha tez bitirməyə görə sıralanır.
 
-Reytinq əvvəlcə düzgün cavab sayına görə sıralanır. Düzgün cavab sayı eyni olduqda imtahanı daha tez bitirən tələbə yuxarıda görünür.
-
-## Vacib qeyd
-
-Bu GitHub Pages statik versiyadır. Reytinq nəticələri istifadəçinin brauzerində saxlanır. Bütün tələbələrin nəticəsinin hər telefonda eyni ümumi cədvəldə görünməsi üçün ayrıca database/backend lazımdır.
+Qeyd: Tam mətn/LaTeX formatı üçün PDF-dəki 249 sualın hamısı bir-bir transkripsiya və yoxlama mərhələsindən keçməlidir, çünki PDF-də bir çox riyazi ifadə text layer kimi düzgün çıxmır.
