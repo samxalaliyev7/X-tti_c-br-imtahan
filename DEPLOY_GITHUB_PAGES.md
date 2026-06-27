@@ -23,6 +23,6 @@ Nümunə:
 
 Əgər köhnə versiya açılırsa, linkin sonuna bunu əlavə et:
 
-`?v=xetti-cebr-249-yekun-v1`
+`?v=xetti-cebr-249-readable-v3`
 
 Vacib: `.github/workflows/blank.yml` yaratma. Bu statik sayt üçün lazım deyil və lazımsız "failed check" xətası verə bilər.
